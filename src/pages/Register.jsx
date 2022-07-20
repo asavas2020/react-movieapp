@@ -3,9 +3,14 @@ import { useState } from "react";
 const Register = () => {
 
   const [firstName, setFirstName] = useState();
-  const [lastNmame, setLastName] = useState();
+  const [lastName, setLastName] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // console.log(firstName, lastName);
+  }
 
   return (
     <div className="d-flex justify-content-center">
@@ -14,7 +19,7 @@ const Register = () => {
       </div>
       <div className="register-form">
         <h1 className="form-title display-3">Register</h1>
-        <form id="register" >
+        <form id="register" onSubmit={handleSubmit} >
           <div className="mb-3">
             <label htmlFor="first-name" className="form-label">First Name</label>
             <input type="text"
