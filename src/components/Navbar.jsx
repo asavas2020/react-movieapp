@@ -1,12 +1,16 @@
+import { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
 
 
 const Navbar = () => {
 
-  const navigate = useNavigate()
+  const {currentUser} = useContext(AuthContext);
+
+  const navigate = useNavigate();
 
   // const currentUser = {displayName : "a savas"}
-  const currentUser = false
+  // const currentUser = false
 
   return (
     <div>
