@@ -29,7 +29,6 @@ const Navbar = () => {
               <>
               <button className='ms-2 btn btn-outline-light' onClick={()=> navigate ("/login")} >Login</button>
               <button className='ms-2 btn btn-outline-light' onClick={()=> navigate ("/register")} >Register</button>
-              
               </>
             )}
           </div>     
