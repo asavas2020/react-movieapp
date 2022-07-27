@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 
 // TODO: Replace the following with your app's Firebase project configuration
 // See: https://firebase.google.com/docs/web/learn-more#config-object
@@ -36,10 +36,25 @@ export const signIn = async(email, password, navigate) => {
 
     let userCredential = await signInWithEmailAndPassword(auth, email, password)
     navigate("/");
+    // sessionStorage.setItem("user", JSON.stringify(userCredential.user))
     console.log(userCredential);
 
   } catch (err) {
     console.log(err);
     
   }  
+}
+
+export const userObserver = (setCurrentUser) =>{
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      
+      setCurrentUser(user);
+    } else {
+     setCurrentUser(false);
+    }
+  });
+}
+export const logOut = () => {
+  signOut(auth)
 }
