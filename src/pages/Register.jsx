@@ -8,11 +8,13 @@ const Register = () => {
   const [lastName, setLastName] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    const displayName = `${firstName} ${lastName}`
     console.log(firstName, lastName);
-    createUser(email, password, navigate);
+    createUser(email, password, navigate, displayName);
     
   }
 
