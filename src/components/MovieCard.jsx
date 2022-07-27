@@ -2,15 +2,18 @@ import React from 'react';
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
-import { toastWarnNotify } from '../helpers/ToastNotify';
+import { toastWarnNotify } from '../components/helpers/ToastNotify';
 
 const IMG_API = 'https://image.tmdb.org/t/p/w1280';
 const defaultImage =
   'https://images.unsplash.com/photo-1581905764498-f1b60bae941a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80';
 
 const MovieCard = ({ poster_path, title, overview, vote_average, id }) => {
+
   const { currentUser } = useContext(AuthContext);
+
   const navigate = useNavigate();
+
   const setVoteClass = (vote) => {
     if (vote > 8) {
       return 'green';
